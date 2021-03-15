@@ -25,11 +25,16 @@ analize = (data) => {
   let newstrings = data.split("\n"); //extract txt file con
   let txtFileContet = divide(newstrings); //devuelve obj ordenado
   let { mensaje } = txtFileContet;
+  let mensajeLimpio = cleanMensaje(mensaje);
+  console.log(mensajeLimpio.join("").includes("CeseAlFuego"));
+};
+
+cleanMensaje = (mensaje) => {
   let mensajeClean = [];
   mensaje.split("").forEach((element, index) => {
     element === mensaje[index + 1] ? null : mensajeClean.push(element);
   });
-  console.log(mensajeClean.join("").includes("CeseAlFuego"));
+  return mensajeClean;
 };
 
 divide = (ary) => {
