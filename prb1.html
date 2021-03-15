@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+<!-- This div will be replaced by the template defined in Vue instance in JavaScript file -->
+
+
+<script>
+// Requiring fs module in which  
+// readFile function is defined. 
+const fs = require('fs') 
+  
+fs.readFile('Input.txt', (err, data) => { 
+    if (err) throw err; 
+  
+    console.log(data.toString()); 
+}) 
+</script>
+</body>
+
+</html>
