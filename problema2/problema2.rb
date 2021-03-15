@@ -3,20 +3,23 @@ file_data = file.readlines.map(&:chomp)
 
 
 class Marcador
-  def initialize(p1, p2)
-    @index, @data = p1, p2
+  def initialize(prop1, prop2, prop3)
+    @ronda, @p1Points , @p2Points = prop1, prop2, prop3
   end
 end
 
 marcadores = []
 
-file_data.each_with_index do |data,index|
+file_data.each_with_index do |data,index|  
     case index
         when 0
-        rondas = data
+            rondas = data
         when 1..rondas
-        marc = Marcador.new(index, data)    
-        marcadores.push(marc)
+            points = data.gsub(/\s+/m, ' ').strip.split(" ")
+            dataP1 = points[0]
+            dataP2 = points[1]
+            marc = Marcador.new(index, dataP1, dataP2)    
+            marcadores.push(marc)
         else
         "outside of range"
     end 
