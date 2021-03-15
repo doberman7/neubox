@@ -33,11 +33,20 @@ analize = (data) => {
     segundaInstruccion,
   } = txtFileContet;
   let mensajeLimpio = cleanMensaje(mensaje);
-  thereIsAHiddenInstruction(mensajeLimpio, primerInstruccion);
-  thereIsAHiddenInstruction(mensajeLimpio, segundaInstruccion);
+  thereIsAHiddenInstruction(
+    mensajeLimpio,
+    primerInstruccion,
+    numDeCaractrsEnIns1
+  );
+  thereIsAHiddenInstruction(
+    mensajeLimpio,
+    segundaInstruccion,
+    numDeCaractrsEnIns2
+  );
 };
 
-thereIsAHiddenInstruction = (message, instruction) => {
+thereIsAHiddenInstruction = (message, instruction, numCaracters) => {
+  //   console.log(Number(numCaracters) === instruction.length);
   message.join("").includes(instruction)
     ? console.log("SI")
     : console.log("NO");
