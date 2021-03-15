@@ -24,9 +24,20 @@ fs.readFile("Input.txt", (err, data) => {
 analize = (data) => {
   let newstrings = data.split("\n"); //extract txt file con
   let txtFileContet = divide(newstrings); //devuelve obj ordenado
-  let { mensaje } = txtFileContet;
+  let {
+    mensaje,
+    numDeCaractrsEnIns1,
+    numDeCaractrsEnIns2,
+    numCaractrsEnMens,
+    primerInstruccion,
+    segundaInstruccion,
+  } = txtFileContet;
   let mensajeLimpio = cleanMensaje(mensaje);
-  console.log(mensajeLimpio.join("").includes("CeseAlFuego"));
+  thereIsAHiddenInstruction(mensajeLimpio, primerInstruccion);
+};
+
+thereIsAHiddenInstruction = (message, instruction) => {
+  console.log(message.join("").includes(instruction));
 };
 
 cleanMensaje = (mensaje) => {
