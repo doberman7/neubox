@@ -3,15 +3,15 @@ file_data = file.readlines.map(&:chomp)
 
 
 class Marcador
-#   to access atributes with .dot nomenclature
-  attr_accessor :ronda, :p1Points, :p2Points
+  #   to access atributes with .dot nomenclature
+  attr_accessor :ronda, :p1Points, :p2Points, :lider, :ventaja
 
   def initialize(ronda, p1Points, p2Points, lider, ventaja)
     @ronda, @p1Points , @p2Points, @lider, @ventaja = ronda, p1Points, p2Points, lider, ventaja
   end
 end
 
-def objectify(arch)
+def getAryOfMarcadorObjects(arch)
     marcadores = []
         arch.each_with_index do |data,index|  
             case index
@@ -41,11 +41,13 @@ def objectify(arch)
     return marcadores
 end
 
-aryMarcadores = objectify(file_data)
+def theWinnerIs(array)    
+    orderedMarcadores = array.sort_by(&:ventaja)    
+    return orderedMarcadores[-1]    
+end
 
-aryMarcadores.each { |x| 
-    p x
-}
+aryMarcadores = getAryOfMarcadorObjects(file_data)
+p theWinnerIs(aryMarcadores)
 
 
 
