@@ -22,7 +22,24 @@ fs.readFile("Input.txt", (err, data) => {
 });
 
 analize = (data) => {
-  //   console.log(data);
   let newstrings = data.split("\n");
-  console.log(newstrings);
+  divide(newstrings);
+};
+
+divide = (ary) => {
+  //   let numeroDeCaracteresInstrucciones = ary[0];
+
+  let numDeCaractrsEnIns1 = ary[0].split(" ")[0];
+  let numDeCaractrsEnIns2 = ary[0].split(" ")[1];
+  let numCaractrsEnMens = ary[0].split(" ")[2];
+
+  analisis = {
+    numDeCaractrsEnIns1: numDeCaractrsEnIns1,
+    numDeCaractrsEnIns2: numDeCaractrsEnIns2,
+    numCaractrsEnMens: numCaractrsEnMens,
+    primerInstruccion: ary[1],
+    segundaInstruccion: ary[2],
+    mensaje: ary[3],
+  };
+  console.log(analisis);
 };
