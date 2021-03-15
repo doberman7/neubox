@@ -29,8 +29,7 @@ analize = (data) => {
   mensaje.split("").forEach((element, index) => {
     element === mensaje[index + 1] ? null : mensajeClean.push(element);
   });
-  console.log(mensajeClean.toString());
-  console.log(mensaje);
+  console.log(mensajeClean.join("").includes("CeseAlFuego"));
 };
 
 divide = (ary) => {
