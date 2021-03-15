@@ -34,10 +34,13 @@ analize = (data) => {
   } = txtFileContet;
   let mensajeLimpio = cleanMensaje(mensaje);
   thereIsAHiddenInstruction(mensajeLimpio, primerInstruccion);
+  thereIsAHiddenInstruction(mensajeLimpio, segundaInstruccion);
 };
 
 thereIsAHiddenInstruction = (message, instruction) => {
-  console.log(message.join("").includes(instruction));
+  message.join("").includes(instruction)
+    ? console.log("SI")
+    : console.log("NO");
 };
 
 cleanMensaje = (mensaje) => {
