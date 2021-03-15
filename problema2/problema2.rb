@@ -6,30 +6,52 @@ class Marcador
 #   to access atributes with .dot nomenclature
   attr_accessor :ronda, :p1Points, :p2Points
 
-  def initialize(prop1, prop2, prop3)
-    @ronda, @p1Points , @p2Points = prop1, prop2, prop3
+  def initialize(ronda, p1Points, p2Points, lider, ventaja)
+    @ronda, @p1Points , @p2Points, @lider, @ventaja = ronda, p1Points, p2Points, lider, ventaja
   end
 end
 
-marcadores = []
+def objectify(arch)
+    marcadores = []
+        arch.each_with_index do |data,index|  
+            case index
+                when 0
+                    rondas = data
+                when 1..rondas
+                    points = data.gsub(/\s+/m, ' ').strip.split(" ")
+                    dataP1 = points[0]
+                    dataP2 = points[1]
+                     # determine winner of ronda    
+                    if dataP1.to_i > dataP2.to_i
+                        lider = "P1"
+                        advantage = dataP1.to_i - dataP2.to_i
+                        marc = Marcador.new(index, dataP1, dataP2, lider ,advantage)    
+                    elsif dataP1.to_i < dataP2.to_i
+                        lider = "P2"
+                        advantage =  dataP2.to_i - dataP1.to_i 
+                        marc = Marcador.new(index, dataP1, dataP2, lider,advantage)        
+                    end
+                    
+                    marcadores.push(marc)
+                else
+                "outside of range"
+            end 
 
-file_data.each_with_index do |data,index|  
-    case index
-        when 0
-            rondas = data
-        when 1..rondas
-            points = data.gsub(/\s+/m, ' ').strip.split(" ")
-            dataP1 = points[0]
-            dataP2 = points[1]
-            marc = Marcador.new(index, dataP1, dataP2)    
-            marcadores.push(marc)
-        else
-        "outside of range"
-    end 
+        end
+    return marcadores
 end
 
-puts "#{marcadores}"
-p marcadores[0].p2Points
+aryMarcadores = objectify(file_data)
+
+aryMarcadores.each { |x| 
+    p x
+}
+
+
+
+
+# puts "#{marcadores}"
+# p marcadores[0].p2Points
 
 # writte 
 # File.open("Output.txt", "w") { |f| f.write "#{file_data} - User logged in\n" }
