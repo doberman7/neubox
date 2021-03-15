@@ -47,13 +47,9 @@ def theWinnerIs(array)
 end
 
 aryMarcadores = getAryOfMarcadorObjects(file_data)
-p theWinnerIs(aryMarcadores)
-
-
-
-
-# puts "#{marcadores}"
-# p marcadores[0].p2Points
+winnerMarcador = theWinnerIs(aryMarcadores)
+p winnerMarcador.lider
+p winnerMarcador.ventaja
 
 # writte 
-# File.open("Output.txt", "w") { |f| f.write "#{file_data} - User logged in\n" }
+File.open("Output.txt", "w") { |f| f.write "#{winnerMarcador.lider} \n #{winnerMarcador.ventaja}" }
