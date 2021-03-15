@@ -3,6 +3,9 @@ file_data = file.readlines.map(&:chomp)
 
 
 class Marcador
+#   to access atributes with .dot nomenclature
+  attr_accessor :ronda, :p1Points, :p2Points
+
   def initialize(prop1, prop2, prop3)
     @ronda, @p1Points , @p2Points = prop1, prop2, prop3
   end
@@ -26,7 +29,7 @@ file_data.each_with_index do |data,index|
 end
 
 puts "#{marcadores}"
-
+p marcadores[0].p2Points
 
 # writte 
 # File.open("Output.txt", "w") { |f| f.write "#{file_data} - User logged in\n" }
