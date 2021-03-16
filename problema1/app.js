@@ -51,10 +51,13 @@ analize = (data) => {
       if (err) return console.log(err);
     }
   );
+  console.log("check:  problema1 > Output.txt");
 };
 
 thereIsAHiddenInstruction = (message, instruction, numCaracters) => {
-  //   console.log(Number(numCaracters) === instruction.length);
+  // Number(numCaracters) >= instruction.length
+  //   ? true
+  //   : console.log("numer of characters exeded");
   return message.join("").includes(instruction) ? "SI" : "NO";
 };
 
