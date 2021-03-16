@@ -33,23 +33,29 @@ analize = (data) => {
     segundaInstruccion,
   } = txtFileContet;
   let mensajeLimpio = cleanMensaje(mensaje);
-  thereIsAHiddenInstruction(
+  let firstLine = thereIsAHiddenInstruction(
     mensajeLimpio,
     primerInstruccion,
     numDeCaractrsEnIns1
   );
-  thereIsAHiddenInstruction(
+  let secondLIne = thereIsAHiddenInstruction(
     mensajeLimpio,
     segundaInstruccion,
     numDeCaractrsEnIns2
+  );
+
+  fs.writeFile(
+    "Output.txt",
+    `${firstLine} \n` + `${secondLIne}`,
+    function (err) {
+      if (err) return console.log(err);
+    }
   );
 };
 
 thereIsAHiddenInstruction = (message, instruction, numCaracters) => {
   //   console.log(Number(numCaracters) === instruction.length);
-  message.join("").includes(instruction)
-    ? console.log("SI")
-    : console.log("NO");
+  return message.join("").includes(instruction) ? "SI" : "NO";
 };
 
 cleanMensaje = (mensaje) => {
