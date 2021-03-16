@@ -6,13 +6,9 @@ const port = 3000;
 
 const server = http.createServer((req, res) => {
   res.statusCode = 200;
-  //   res.setHeader("Content-Type", "text/plain");
-  //   res.end("Hello World");
 });
 
-server.listen(port, hostname, () => {
-  //   console.log(`Server running at http://${hostname}:${port}/`);
-});
+server.listen(port, hostname, () => {});
 
 fs.readFile("Input.txt", (err, data) => {
   if (err) throw err;
@@ -24,25 +20,10 @@ fs.readFile("Input.txt", (err, data) => {
 analize = (data) => {
   let newstrings = data.split("\n"); //extract txt file con
   let txtFileContet = divide(newstrings); //devuelve obj ordenado
-  let {
-    mensaje,
-    numDeCaractrsEnIns1,
-    numDeCaractrsEnIns2,
-    numCaractrsEnMens,
-    primerInstruccion,
-    segundaInstruccion,
-  } = txtFileContet;
+  let { mensaje, primerInstruccion, segundaInstruccion } = txtFileContet;
   let mensajeLimpio = cleanMensaje(mensaje);
-  let firstLine = thereIsAHiddenInstruction(
-    mensajeLimpio,
-    primerInstruccion,
-    numDeCaractrsEnIns1
-  );
-  let secondLIne = thereIsAHiddenInstruction(
-    mensajeLimpio,
-    segundaInstruccion,
-    numDeCaractrsEnIns2
-  );
+  let firstLine = thereIsAHiddenInstruction(mensajeLimpio, primerInstruccion);
+  let secondLIne = thereIsAHiddenInstruction(mensajeLimpio, segundaInstruccion);
 
   fs.writeFile(
     "Output.txt",
@@ -54,10 +35,7 @@ analize = (data) => {
   console.log("check:  problema1 > Output.txt");
 };
 
-thereIsAHiddenInstruction = (message, instruction, numCaracters) => {
-  // Number(numCaracters) >= instruction.length
-  //   ? true
-  //   : console.log("numer of characters exeded");
+thereIsAHiddenInstruction = (message, instruction) => {
   return message.join("").includes(instruction) ? "SI" : "NO";
 };
 
