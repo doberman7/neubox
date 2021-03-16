@@ -14,3 +14,4 @@ Uses ruby
 
 1. go to folder `problema2/ `
 2. run `ruby problema2.rb`
+3. open file `Output.txt`
